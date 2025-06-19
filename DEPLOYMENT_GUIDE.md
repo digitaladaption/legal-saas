@@ -1,47 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
----
-
-## Production Deployment Guide
+# Production Deployment Guide
 
 This guide provides instructions for deploying your Next.js application to a production environment like Hetzner. The most common cause of deployment issues, where the application fails to load styles or data, is missing environment variables.
 
-### 1. Required Environment Variables
+## 1. Required Environment Variables
 
 Your application requires the following environment variables to be set in your production environment:
 
@@ -55,7 +16,7 @@ Your application requires the following environment variables to be set in your 
 - The variables prefixed with `NEXT_PUBLIC_` are safe to be exposed to the browser.
 - `SUPABASE_SERVICE_ROLE_KEY` is a **secret** and must **never** be exposed in your client-side code.
 
-### 2. Building the Application for Production
+## 2. Building the Application for Production
 
 Unlike in development (`next dev`), you must first build your application and then start it.
 
@@ -67,11 +28,11 @@ npm run build
 npm run start
 ```
 
-### 3. How to Set Environment Variables
+## 3. How to Set Environment Variables
 
 You need to make the variables from step 1 available to the `npm run start` process. Here are a few common ways to do this on a server like one from Hetzner.
 
-#### Option A: Using a `.env.local` File (Simple but less common for production)
+### Option A: Using a `.env.local` File (Simple but less common for production)
 
 You can create a `.env.local` file in the root of your project on the server, just like you have locally.
 
@@ -83,7 +44,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
 Then, run the start command. Next.js will automatically load these variables.
 
-#### Option B: Using Shell Variables (Direct & Simple)
+### Option B: Using Shell Variables (Direct & Simple)
 
 You can set the variables directly in the terminal session before starting the application.
 
@@ -98,7 +59,7 @@ npm run start
 ```
 **Note:** These variables will only be set for the current terminal session. If the server reboots, you will need to set them again. For a permanent solution, you can add the `export` commands to your shell's profile script (e.g., `~/.bashrc` or `~/.zshrc`).
 
-#### Option C: Using a Process Manager (PM2 - Recommended)
+### Option C: Using a Process Manager (PM2 - Recommended)
 
 If you are using a process manager like PM2 to keep your application running, you can define the environment variables in an `ecosystem.config.js` file.
 
@@ -125,7 +86,7 @@ Then start your app with PM2:
 pm2 start ecosystem.config.js
 ```
 
-#### Option D: Using Docker
+### Option D: Using Docker
 
 If you are deploying with Docker, you should pass the environment variables to the container during startup.
 
@@ -159,4 +120,4 @@ services:
       - ./production.env
 ```
 
-After setting the environment variables using the method that matches your setup, restart your application. The styling and functionality should now appear correctly.
+After setting the environment variables using the method that matches your setup, restart your application. The styling and functionality should now appear correctly. 
